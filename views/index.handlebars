@@ -1,0 +1,138 @@
+<h1>Clients Table</h1>
+<div class="row">
+
+<ul>
+  {{#each clients}}
+      <li>
+        {{this.client_name}}
+
+          <span>
+            <form action="clients/update/{{this.clientId}}?_method=PUT" method="POST">
+                <input type="text" name="clientName" value={{this.client_name}}>
+                <button type="submit">change client name</button>
+            </form>
+            {{#if this.sectionValue}}
+            <form action="sections/update/{{this.clientId}}?_method=PUT" method="POST">
+                <input type="text" name="clientName" value={{this.sectionValue}}>
+                <button type="submit">change select value</button>
+            </form>
+           {{/if}}
+            {{#if this.linkName}}
+            <form action="links/update/{{this.clientId}}?_method=PUT" method="POST">
+                <input type="text" name="linkName" value={{this.linkName}}>
+                <button type="submit">change link value</button>
+            </form>
+           {{/if}}
+            <form action="clients/delete/{{this.clientId}}?_method=DELETE" method="POST">
+              <button type="submit">Delete</button>
+            </form>
+          </span>
+
+      </li>
+  {{/each}}
+</ul>
+
+<h1>Section Table</h1>
+<div class="row">
+<ul>
+  {{#each sections}}
+      <li>
+        {{this.sectionValue}}
+
+          <span>
+            <form action="sections/update/{{this.sectionId}}?_method=PUT" method="POST">
+                <input type="text" name="sectionValue" value={{this.sectionValue}}>
+                <button type="submit">change select value</button>
+            </form>
+            <form action="sections/delete/{{this.sectionId}}?_method=DELETE" method="POST">
+              <button type="submit">Delete</button>
+            </form>
+          </span>
+      </li>
+  {{/each}}
+</ul>
+
+
+<h1>Links Table</h1>
+<div class="row">
+<ul>
+  {{#each links}}
+      <li>
+        {{this.linkName}}
+
+          <span>
+            <form action="links/update/{{this.linkId}}?_method=PUT" method="POST">
+                <input type="text" name="linkName" value={{this.linkName}}>
+                <button type="submit">change select value</button>
+            </form>
+            <form action="links/delete/{{this.linkId}}?_method=DELETE" method="POST">
+              <button type="submit">Delete</button>
+            </form>
+          </span>
+      </li>
+  {{/each}}
+</ul>
+</div>
+
+<h2>Add Values Below:</h2>
+<form action="clients/create/" method="POST">
+
+  <div class="form-group">
+    <label>Client Name:</label>
+    <input type="text" name="name">
+  </div>
+  <button type="submit">Add Client</button>
+</form>
+<br/>
+<form action="sections/create/" method="POST">
+
+  <div class="form-group">
+    <label>Sections Value:</label>
+    <input type="text" name="sectionValue" placeholder="section Value">
+    <input type="text" name="clientId" placeholder="clientId">
+  </div>
+  <button type="submit">Add Section Value</button>
+</form>
+
+<form action="links/create/" method="POST">
+
+  <div class="form-group">
+    <label>Link Name:</label>
+    <input type="text" name="linkName" placeholder="link Name">
+    <input type="text" name="sectionId" placeholder="section id">
+  </div>
+  <button type="submit">Add link Value</button>
+</form>
+<br/>
+
+
+
+
+
+
+
+
+
+
+
+
+{{!--         {{> clients/delete-clients}} --}}
+
+
+<ul>
+  {{#each clients}}
+    {{#if this.section}}
+      <li>
+        {{this.client_name}}
+
+
+        <form action="clients/update/{{this.clientId}}?_method=PUT" method="POST">
+          <input type="hidden" name="section" value="0">
+          <button type="submit">Switch</button>
+        </form>
+
+
+      </li>
+    {{/if}}
+  {{/each}}
+</ul>
