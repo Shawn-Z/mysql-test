@@ -30,7 +30,3 @@ var linksModel = {
 
 
 module.exports = linksModel;
-
-
-
-
