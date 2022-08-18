@@ -28,9 +28,4 @@ var clientModel = {
 	}
 };
 
-
 module.exports = clientModel;
-
-
-
-
