@@ -30,7 +30,3 @@ var sectionsModel = {
 
 
 module.exports = sectionsModel;
-
-
-
-
